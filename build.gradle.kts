@@ -2,6 +2,7 @@
 plugins {
     // Supplied by `libs.plugins.example.android.application`
     alias(libs.plugins.android.application) apply false
+    // Supplied by `libs.plugins.example.android.library`
     alias(libs.plugins.android.library) apply false
 
     alias(libs.plugins.kotlin.android) apply false
