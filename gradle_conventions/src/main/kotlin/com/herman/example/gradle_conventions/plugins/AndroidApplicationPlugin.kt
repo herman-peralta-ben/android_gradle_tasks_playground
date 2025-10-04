@@ -1,6 +1,7 @@
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.plugins.PluginManager
+import org.gradle.kotlin.dsl.register
 import org.jetbrains.annotations.VisibleForTesting
 
 /**
@@ -23,5 +24,16 @@ class AndroidApplicationPlugin : Plugin<Project> {
     @VisibleForTesting
     fun configureTarget(target: Project) {
         target.extensions.extraProperties.set("myProperty", "Hello World")
+
+        // 💡 Now "helloWorld" task is included in any module that adds ´libs.plugins.example.android.application´.
+        target.tasks.register<HelloWorldTask>("helloWorld") {
+            if (project.hasProperty("who")) {
+                // `./gradlew helloWorld -Pwho=Herman`
+                nameProp.set(project.property("who").toString())
+            } else {
+                // `./gradlew helloWorld`
+                nameProp.set("World")
+            }
+        }
     }
 }
