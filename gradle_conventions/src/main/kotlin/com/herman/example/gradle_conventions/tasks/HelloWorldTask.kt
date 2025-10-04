@@ -1,0 +1,36 @@
+import com.herman.example.gradle_conventions.common.SimpleLogger
+import org.gradle.api.DefaultTask
+import org.gradle.api.provider.Property
+import org.gradle.api.tasks.Input
+import org.gradle.api.tasks.TaskAction
+import org.jetbrains.annotations.VisibleForTesting
+
+/**
+ * ⚠️ Make sure the plugin and tasks have no package directive
+ * ⚠️ Custom [DefaultTask]s should be abstract or open class,
+ *     so gradle instantiates them correctly.
+ * To use your Task, make sure to:
+ * 1. Have a registered plugin, see [AndroidApplicationPlugin].
+ * 2. Use the plugin in your module's `build.gradle.kts`.
+ * 3. Register the task with
+ * ```kotlin
+ * tasks.register<HelloWorldTask>("helloWorld") { nameProp.set("World") }
+ * ```
+ * 4. Run your task from :app, since it's registered on app's build.gradle.kts.
+ * ```bash
+ * ./gradlew app:helloWorld
+ * ```
+ */
+abstract class HelloWorldTask : DefaultTask() {
+
+    @get:Input
+    abstract val nameProp: Property<String>
+
+    @VisibleForTesting
+    var logger = SimpleLogger()
+
+    @TaskAction // This annotation indicates the task entry point method.
+    fun execute() {
+        logger.log("🎉 Hello, ${nameProp.get()} 🎉")
+    }
+}

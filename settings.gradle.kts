@@ -1,4 +1,8 @@
 pluginManagement {
+
+    // See `gradle_conventions` module
+    includeBuild("gradle_conventions")
+
     repositories {
         google {
             content {
@@ -21,4 +25,3 @@ dependencyResolutionManagement {
 
 rootProject.name = "android_gradle_tasks_playground"
 include(":app")
- 
