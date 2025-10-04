@@ -25,3 +25,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "android_gradle_tasks_playground"
 include(":app")
+include(":android_lib")
+include(":android_lib2")
