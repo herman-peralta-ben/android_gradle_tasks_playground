@@ -58,13 +58,3 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 }
-
-tasks.register<HelloWorldTask>("helloWorld") {
-    if (project.hasProperty("who")) {
-        // `./gradlew helloWorld -Pwho=Herman`
-        nameProp.set(project.property("who").toString())
-    } else {
-        // `./gradlew helloWorld`
-        nameProp.set("World")
-    }
-}
