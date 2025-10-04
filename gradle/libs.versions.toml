@@ -35,6 +35,7 @@ androidx-material3 = { group = "androidx.compose.material3", name = "material3" 
 # region gradle_conventions
 # ⚠️ Make sure custom plugins ids match the registered ids on `gradle_conventions/build.gradle.kts`.
 example-android-application = { id = "example.android.application", version = "unspecified" }
+example-android-library = { id = "example.android.library", version = "unspecified" }
 # endregion gradle_conventions
 android-application = { id = "com.android.application", version.ref = "agp" }
 android-library = { id = "com.android.library", version.ref = "agp" }

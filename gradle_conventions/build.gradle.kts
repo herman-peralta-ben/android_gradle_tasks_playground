@@ -38,10 +38,16 @@ tasks {
 }
 
 gradlePlugin {
+    // 💡 The `ids`below are the ones used in ´plugins { alias(id) }´ block in your build.gradle.kts file.
     plugins {
         register("androidApplication") {
             id = "example.android.application"
             implementationClass = "AndroidApplicationPlugin"
+        }
+
+        register("androidLibrary") {
+            id = "example.android.library"
+            implementationClass = "AndroidLibraryPlugin"
         }
     }
 }

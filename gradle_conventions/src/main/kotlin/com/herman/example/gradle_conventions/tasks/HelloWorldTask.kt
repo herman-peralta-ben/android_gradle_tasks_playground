@@ -16,9 +16,17 @@ import org.jetbrains.annotations.VisibleForTesting
  * ```kotlin
  * tasks.register<HelloWorldTask>("helloWorld") { nameProp.set("World") }
  * ```
- * 4. Run your task from :app, since it's registered on app's build.gradle.kts.
+ * 4. Run helloWorld on :app is possible since helloWorld is
+ * registered in [AndroidApplicationPlugin].
  * ```bash
  * ./gradlew app:helloWorld
+ * ./gradlew helloWorld -Pwho=World
+ * ```
+ * 5. As an example, running helloWorld on :android_lib will break,
+ * since is not registered in [AndroidLibraryPlugin] and :android_lib
+ * is not applying [AndroidApplicationPlugin].
+ * ```bash
+ * ./gradlew android_lib:helloWorld
  * ```
  */
 abstract class HelloWorldTask : DefaultTask() {
